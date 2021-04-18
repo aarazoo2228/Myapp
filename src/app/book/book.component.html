@@ -1,0 +1,124 @@
+
+<!-- <div class="container">
+    <h1 class="d-flex justify-content-center m-3 text-secondary">My Book App/lication</h1>
+    <div class="d-flex justify-content-center">
+        <table class="table  m-4">
+            <thead class="text-secondary">
+                <th>Id</th>
+                <th>Book Name</th>
+                <th>Qauntity</th>
+                <th>Action</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let book of books">
+                    <td>{{book._id}}</td>
+                    <td>
+                        <div *ngIf="book.isEdit">
+                            <input type="text" [(ngModel)]="book.bookname">
+                        </div>
+                        <div *ngIf="!book.isEdit">
+                            {{book.name}}
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="book.isEdit">
+                             <input type="text" [(ngModel)]="book.bookqty">
+                        </div>
+                        <div *ngIf="!book.isEdit">
+                            {{book.qty}}
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="book.isEdit">
+                            <button class="btn btn-warning text-white" (click)="update(book)">Update</button>
+                            <button class="btn btn-secondary m-1" (click)="cancle(book)">Cancle</button>
+                        </div>
+                        <div *ngIf="!book.isEdit">
+                            <button class="btn btn-success" (click)="edit(book)">Edit</button>
+                            <button class="btn btn-danger m-1" (click)="delete(book)">Delete</button>
+                        </div>
+                    </td>
+                </tr>                
+            </tbody>
+        </table>
+    </div>
+</div> -->
+<div class="container">
+    <h2 class="d-flex justify-content-center m-3 text-secondary">My Book Application</h2>
+     <div class="row">
+    <div class="col"><br>
+        <form class="col-8" [formGroup]="mybook" (ngSubmit)="addbook()">
+            <div class="form-group">
+              <label>Book Name</label>
+              <input type="text" formControlName="bookname" class="form-control" placeholder="Enter Book Name">
+            </div>
+            <div class="alert alert-danger col mt-2" *ngIf="mybook.controls.bookname.invalid && (mybook.controls.bookname.touched || mybook.controls.bookname.dirty)">
+                <div *ngIf="mybook.controls.bookname.errors.required">
+                    Bookname is Required
+                </div>
+                <div *ngIf="mybook.controls.bookname.errors.minlength">
+                    Minimum length should be 3
+                </div>
+            </div>  
+            <div class="form-group">
+              <label>Book Qauntity</label>
+              <input type="text" formControlName="bookqty" class="form-control" placeholder="Enter Book Qauntity">
+            </div>
+            <div class="alert alert-danger col mt-2" *ngIf="mybook.controls.bookqty.invalid && (mybook.controls.bookqty.touched || mybook.controls.bookqty.dirty)">
+                <div *ngIf="mybook.controls.bookqty.errors.required">
+                    Book Qauntity is Required
+                </div>
+                <div *ngIf="mybook.controls.bookqty.errors.min">
+                    Minimum Qauntity should be 3
+                </div>
+            </div> 
+            <button type="submit" class="btn btn-primary" [disabled]="mybook.invalid">Submit</button>
+          </form>
+    </div>
+    <div class="">
+    <div class="d-flex justify-content-center">
+        <div class="table-responsive-sm">
+        <table class="table m-4">
+            <thead class="text-secondary">
+                <th>Id</th>
+                <th>Book Name</th>
+                <th>Qauntity</th>
+                <th>Action</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let book of books">
+                    <td>{{book._id}}</td>
+                    <td>
+                        <div *ngIf="book.isEdit">
+                            <input type="text" [(ngModel)]="book.bookname">
+                        </div>
+                        <div *ngIf="!book.isEdit">
+                            {{book.bookname}}
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="book.isEdit">
+                             <input type="text" [(ngModel)]="book.bookqty">
+                        </div>
+                        <div *ngIf="!book.isEdit">
+                            {{book.bookqty}}
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="book.isEdit">
+                            <button class="btn btn-warning text-white" (click)="update(book)">Update</button>
+                            <button class="btn btn-secondary m-1" (click)="cancle(book)">Cancle</button>
+                        </div>
+                        <div *ngIf="!book.isEdit">
+                            <button class="btn btn-success" (click)="edit(book)">Edit</button>
+                            <button class="btn btn-danger m-1" (click)="delete(book)">Delete</button>
+                        </div>
+                    </td>
+                </tr>                
+            </tbody>
+        </table>
+    </div>
+    </div>
+</div>
+</div>
+</div>

@@ -1,0 +1,26 @@
+<div class="container col-sm-4 mt-sm-4">
+<h3 class="d-flex justify-content-center text-secondary  justify-content-sm-center m-sm-4">Login</h3>
+
+    <form [formGroup]="login" (ngSubmit)="onLoginUser()">
+        <div class="form-group">
+          <label>Username</label>
+          <input type="text" class="form-control" formControlName="uname"   placeholder="Enter email">
+          <div class="alert alert-danger col-8 mt-2" *ngIf="login.controls.uname.invalid && (login.controls.uname.touched || login.controls.uname.dirty)">
+            <div *ngIf="login.controls.uname.errors.required">
+                username is compulsary
+            </div>
+          </div>  
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" class="form-control" formControlName="pswd" placeholder="Password">
+          <div class="alert alert-danger col-8 mt-2" *ngIf="login.controls.pswd.invalid && (login.controls.pswd.touched || login.controls.pswd.dirty)">
+            <div *ngIf="login.controls.pswd.errors.required">
+                Password is compulsary
+            </div>
+          </div> 
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="login.invalid">Submit</button>
+      </form>
+</div>
+

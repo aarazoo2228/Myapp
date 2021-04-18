@@ -1,0 +1,33 @@
+<h3 class="d-flex justify-content-center text-secondary  justify-content-sm-center m-sm-4">Registration Here!!</h3>
+<div class="container col-md-4 mt-md-4">
+    <form [formGroup]="signup" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label>Username</label>
+          <input type="text" formControlName="uname" class="form-control" placeholder="Enter email">
+          <div class="alert alert-danger col-8 mt-2" *ngIf="signup.controls.uname.invalid && (signup.controls.uname.touched || signup.controls.uname.dirty)">
+            <div *ngIf="signup.controls.uname.errors.required">
+                username is compulsary
+            </div>
+            <div *ngIf="signup.controls.uname.errors.minlength">
+                Minimum length should be 3
+            </div>
+           </div>  
+        </div>
+
+
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" formControlName="pswd" class="form-control" placeholder="Password">
+          <div class="alert alert-danger col-8 mt-2" *ngIf="signup.get('pswd').invalid && (signup.get('pswd').touched || signup.get('pswd').dirty)">
+            <div *ngIf="signup.controls.pswd.errors.required">
+                Passwd is compulsary
+            </div>
+            <div *ngIf="signup.controls.pswd.errors.minlength">
+                Minimum length should be 3
+            </div>
+        </div>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="signup.invalid">Submit</button>
+      </form>
+</div>
+
